@@ -13,7 +13,9 @@ import '../widgets/product_details/product_name.dart';
 
 class ProductDetailsView extends StatelessWidget {
   final ProductModel product;
-  const ProductDetailsView({super.key, required this.product});
+  final String imageKey;
+  const ProductDetailsView(
+      {super.key, required this.product, required this.imageKey});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class ProductDetailsView extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               background: ImageWidget(
                 image: product.productImage,
+                imageKey: imageKey,
               ),
             ),
           ),

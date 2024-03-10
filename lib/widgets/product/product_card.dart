@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grocery_app/constants.dart';
 import 'package:grocery_app/cubits/cart_cubit/cart_cubit.dart';
 import 'package:grocery_app/models/product_model.dart';
 import 'package:grocery_app/views/product_details_view.dart';
@@ -15,6 +14,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String imageKey = UniqueKey().toString();
     return BlocProvider(
       create: (context) => CartCubit(),
       child: GestureDetector(
@@ -27,6 +27,7 @@ class ProductCard extends StatelessWidget {
                 child: BlocBuilder<CartCubit, CartState>(
                   builder: (context, state) {
                     return ProductDetailsView(
+                      imageKey: imageKey,
                       product: state is CartProductFetched
                           ? state.cartProduct
                           : product,
@@ -62,7 +63,7 @@ class ProductCard extends StatelessWidget {
                     child: SizedBox(
                       height: 70.0.h,
                       child: Hero(
-                        tag: kProductImageTag,
+                        tag: imageKey,
                         child: Image.network(
                           product.productImage,
                         ),

@@ -20,7 +20,7 @@ class ShopView extends StatelessWidget {
           toolbarHeight: 100.h,
           // expandedHeight: 100.h,
           centerTitle: true,
-
+          automaticallyImplyLeading: false,
           title: Column(
             children: [
               SvgPicture.asset(

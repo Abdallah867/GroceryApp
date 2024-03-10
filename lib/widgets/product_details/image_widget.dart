@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
-import '../../constants.dart';
-
 class ImageWidget extends StatelessWidget {
   final String image;
+  final String imageKey;
   const ImageWidget({
     required this.image,
     super.key,
+    required this.imageKey,
   });
 
   @override
@@ -27,7 +27,7 @@ class ImageWidget extends StatelessWidget {
         ),
       ),
       child: Hero(
-        tag: kProductImageTag,
+        tag: imageKey,
         child: Image.network(image),
       ),
     );

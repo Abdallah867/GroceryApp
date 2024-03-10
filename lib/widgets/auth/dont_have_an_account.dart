@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+import '../../views/sign_up_view.dart';
 import '../custom_text.dart';
 
 class DontHaveAnAccountWidget extends StatelessWidget {
@@ -19,7 +20,9 @@ class DontHaveAnAccountWidget extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const SignUpView()),
+            );
           },
           child: const Text(
             "Signup",

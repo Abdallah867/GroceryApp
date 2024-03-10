@@ -11,6 +11,7 @@ import 'package:grocery_app/views/sign_up_view.dart';
 import 'cubits/check_user_if_exists/check_user_if_exists_state.dart';
 import 'helper/service_locator.dart';
 import 'simple_bloc_observer.dart';
+import 'widgets/connectivity/home_checker_connexion.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
