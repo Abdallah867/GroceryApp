@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:grocery_app/cubits/cubit/profile_cubit_cubit.dart';
 import 'package:grocery_app/views/cart_view.dart';
 import 'package:grocery_app/views/favourite_view.dart';
 import 'package:grocery_app/views/profile_view.dart';
@@ -18,8 +19,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    // BlocProvider.of<ProductCubit>(context).getProducts();
-    // BlocProvider.of<CategoryCubit>(context).getCategories();
     super.initState();
   }
 
@@ -31,7 +30,10 @@ class _HomeViewState extends State<HomeView> {
     ),
     const CartView(),
     const FavouriteView(),
-    const ProfileView(),
+    BlocProvider(
+      create: (context) => ProfileCubitCubit()..getUserInformations(),
+      child: const ProfileView(),
+    ),
   ];
   int pageIndex = 0;
 

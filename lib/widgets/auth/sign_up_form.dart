@@ -9,10 +9,17 @@ import '../../helper/show_snack_bar.dart';
 import '../custom_button.dart';
 import '../custom_text_field.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
   });
+
+  @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  final GlobalKey<FormState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,7 @@ class SignUpForm extends StatelessWidget {
         return AbsorbPointer(
           absorbing: state is SignUpLoading ? true : false,
           child: Form(
-            key: authCubit.signupKey,
+            key: _key,
             child: Column(
               children: [
                 CustomTextFormField(
@@ -74,7 +81,7 @@ class SignUpForm extends StatelessWidget {
                       )
                     : CustomButton(
                         onPressed: () async {
-                          if (authCubit.signupKey.currentState!.validate()) {
+                          if (_key.currentState!.validate()) {
                             await authCubit.registerNewUser();
                           }
                         },

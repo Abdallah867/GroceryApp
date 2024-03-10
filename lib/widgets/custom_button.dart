@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
         text,
         style: TextStyle(
           color: !isLogoutButton ? Colors.white : kSecondaryColor,
-          fontSize: 14.sp,
+          fontSize: 18.sp,
         ),
       ),
     );

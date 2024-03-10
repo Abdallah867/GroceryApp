@@ -34,12 +34,4 @@ final class LogoutFailure extends AuthState {
   LogoutFailure({required this.errMessage});
 }
 
-final class UserFetched extends AuthState {
-  // final User user;
-
-  // UserFetched({required this.user});
-}
-
-final class GetUserLoading extends AuthState {}
-
 final class PasswordVisibilityChanged extends AuthState {}

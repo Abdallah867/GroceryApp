@@ -81,15 +81,4 @@ class AuthCubit extends Cubit<AuthState> {
       emit(LogoutFailure(errMessage: e.toString()));
     }
   }
-
-  getUserInformations() async {
-    try {
-      emit(GetUserLoading());
-      final user = await account.get();
-      userInfo = user;
-      emit(UserFetched());
-    } on Exception catch (e) {
-      print(e.toString());
-    }
-  }
 }

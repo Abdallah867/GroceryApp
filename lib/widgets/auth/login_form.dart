@@ -8,10 +8,17 @@ import '../../views/home_view.dart';
 import '../custom_button.dart';
 import '../custom_text_field.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
   });
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final GlobalKey<FormState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,7 @@ class LoginForm extends StatelessWidget {
         return AbsorbPointer(
           absorbing: state is SignInLoading ? true : false,
           child: Form(
-            key: authCubit.loginKey,
+            key: _key,
             child: Column(
               children: [
                 SizedBox(
@@ -76,7 +83,7 @@ class LoginForm extends StatelessWidget {
                       )
                     : CustomButton(
                         onPressed: () async {
-                          if (authCubit.loginKey.currentState!.validate()) {
+                          if (_key.currentState!.validate()) {
                             await authCubit.loginUser();
                           }
                         },
