@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grocery_app/views/home_view.dart';
-
 import '../../constants.dart';
 import '../../cubits/auth_cubit/auth_cubit.dart';
+import '../../cubits/checking_connexion/checking_connexion_cubit.dart';
 import '../../helper/show_snack_bar.dart';
+import '../connectivity/home_checker_connexion.dart';
 import '../custom_button.dart';
 import '../custom_text_field.dart';
 
@@ -30,7 +30,12 @@ class _SignUpFormState extends State<SignUpForm> {
         if (state is SignUpSuccess) {
           showSnackBar(context, "signed up successfully");
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomeView()),
+            MaterialPageRoute(
+              builder: (context) => BlocProvider(
+                create: (context) => CheckingConnexionCubit(),
+                child: const HomeCheckerConnexion(),
+              ),
+            ),
           );
         }
         if (state is SignUpFailure) {
